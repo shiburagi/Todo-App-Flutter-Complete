@@ -296,7 +296,7 @@ class _HomeViewState extends State<HomeView> {
             height: 75.0 + MediaQuery.of(context).padding.bottom,
             minWidth: 65.0,
             child: Icon(Icons.add, color: Colors.white),
-            color: Color(0xFFFF4954),
+            color: Theme.of(context).accentColor,
             onPressed: addTodo,
           ),
         ),
