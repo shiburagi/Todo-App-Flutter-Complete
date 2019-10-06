@@ -73,7 +73,7 @@ class _HomeViewState extends State<HomeView> {
       padding: const EdgeInsets.symmetric(horizontal: 12),
       child: Container(
         height: 60,
-        padding: EdgeInsets.symmetric(horizontal: 8),
+        padding: EdgeInsets.symmetric(horizontal: 4),
         decoration: BoxDecoration(
             color: Theme.of(context).canvasColor,
             border: Border(top: borderSide, bottom: borderSide)),
