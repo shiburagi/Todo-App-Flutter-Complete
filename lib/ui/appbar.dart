@@ -7,7 +7,7 @@ class CustomAppBar extends StatelessWidget {
     return SliverAppBar(
       expandedHeight: 180.0,
       automaticallyImplyLeading: false,
-      iconTheme: IconThemeData(color: Color(0xFF433D82)),
+      iconTheme: IconThemeData(color: Theme.of(context).primaryColor),
       floating: false,
       elevation: 0,
       pinned: false,
@@ -17,7 +17,7 @@ class CustomAppBar extends StatelessWidget {
         centerTitle: false,
         title: Text(
           "",
-          style: TextStyle(color: Color(0xFF433D82)),
+          style: TextStyle(color: Theme.of(context).primaryColor),
         ),
         background: SafeArea(
           child: Padding(
@@ -51,14 +51,14 @@ class CustomAppBar extends StatelessWidget {
         Text(
           'Hello,',
           style: Theme.of(context).textTheme.display1.copyWith(
-                color: Color(0xFF433D82),
+                color: Theme.of(context).primaryColor,
                 fontSize: 24,
               ),
         ),
         Text(
           '$name',
           style: Theme.of(context).textTheme.display2.copyWith(
-                color: Color(0xFF433D82),
+                color: Theme.of(context).primaryColor,
                 fontWeight: FontWeight.w700,
                 fontSize: 48,
               ),

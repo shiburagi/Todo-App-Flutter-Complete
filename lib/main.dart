@@ -29,12 +29,12 @@ class MyApp extends StatelessWidget {
               theme: ThemeData(
                 brightness: Brightness.light,
                 fontFamily: 'ProductSans',
-                primarySwatch: Colors.blue,
+                primaryColor: Color(0xFF433D82),
               ),
               darkTheme: ThemeData(
                 brightness: Brightness.dark,
                 fontFamily: 'ProductSans',
-                primarySwatch: Colors.red,
+                primaryColor: Color(0xffa29bfe),
               ),
               home: HomePage(),
             );
