@@ -19,18 +19,24 @@ class MyApp extends StatelessWidget {
     return Provider<Bloc>(
       builder: (context) => bloc,
       dispose: (context, Bloc item) => item.dispose(),
-      child: StreamBuilder<Brightness>(
-          stream: bloc.brightnessStream ?? Brightness.light,
+      child: StreamBuilder<ThemeMode>(
+          stream: bloc.themeModeStream,
           builder: (context, snapshot) {
             return MaterialApp(
               title: 'Todo App',
               debugShowCheckedModeBanner: false,
+              themeMode: snapshot.data,
               theme: ThemeData(
-                brightness: snapshot.data,
+                brightness: Brightness.light,
                 fontFamily: 'ProductSans',
                 primarySwatch: Colors.blue,
               ),
-              home: Material(child: HomePage()),
+              darkTheme: ThemeData(
+                brightness: Brightness.dark,
+                fontFamily: 'ProductSans',
+                primarySwatch: Colors.red,
+              ),
+              home: HomePage(),
             );
           }),
     );

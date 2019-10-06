@@ -1,28 +1,32 @@
 import 'dart:async';
 
-import 'package:flutter/services.dart';
+import 'package:flutter/material.dart';
 
 class Bloc {
+  StreamController<ThemeMode> _themeModeStreamController = StreamController();
+  Stream<ThemeMode> themeModeStream;
 
-  StreamController<Brightness> _brightnessStreamController = StreamController();
-  Stream<Brightness> brightnessStream;
-
-  Brightness brightness;
+  ThemeMode themeMode;
   Bloc() {
-    brightnessStream = _brightnessStreamController.stream.asBroadcastStream()
+    themeModeStream = _themeModeStreamController.stream.asBroadcastStream()
       ..listen((data) {
-        brightness = data;
+        themeMode = data;
       });
-    _brightnessStreamController.sink.add(Brightness.light);
+    _themeModeStreamController.sink.add(ThemeMode.system);
   }
-
 
   dispose() {
-    _brightnessStreamController.close();
+    _themeModeStreamController.close();
   }
 
-  void updateBrightness() {
-    _brightnessStreamController.sink.add(
-        brightness == Brightness.dark ? Brightness.light : Brightness.dark);
+  bool isDarkTheme(BuildContext context) {
+    return themeMode == ThemeMode.dark ||
+        (themeMode == ThemeMode.system &&
+            MediaQuery.of(context).platformBrightness == Brightness.dark);
+  }
+
+  void updateBrightness(BuildContext context) {
+    _themeModeStreamController.sink
+        .add(isDarkTheme(context) ? ThemeMode.light : ThemeMode.dark);
   }
 }
